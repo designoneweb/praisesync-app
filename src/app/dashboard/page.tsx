@@ -62,7 +62,6 @@ const Dashboard: React.FC<{}> = () => {
           </Link>
         </div>
       </div>
-
       {/* Prepare Sunday Button */}
       <div className="mb-8 text-center">
         <button 
@@ -72,7 +71,6 @@ const Dashboard: React.FC<{}> = () => {
           Prepare Sunday
         </button>
       </div>
-      
       {/* Upcoming Services Section */}
       <div className="mb-8">
         <h2 className="text-xl font-semibold text-[#1E2A52] mb-4">Upcoming Services</h2>
@@ -97,30 +95,40 @@ const Dashboard: React.FC<{}> = () => {
             <p className="text-gray-600">No upcoming services scheduled.</p>
         )}
       </div>
-
       {/* Quick Actions Section */}
       <div className="mb-8">
         <h2 className="text-xl font-semibold text-[#1E2A52] mb-4">Quick Actions</h2>
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
-          <Link href="/setlist" className="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow text-[#1E2A52] hover:bg-gray-50 flex flex-col items-center justify-center">
+          <Link
+            href="/setlist"
+            className="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow text-[#1E2A52] hover:bg-gray-50 flex flex-col items-center justify-center"
+            legacyBehavior>
             <MusicNoteIcon />
             <span className="mt-1 text-sm font-medium">New Set List</span>
           </Link>
-          <Link href="/schedule" className="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow text-[#1E2A52] hover:bg-gray-50 flex flex-col items-center justify-center">
+          <Link
+            href="/schedule"
+            className="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow text-[#1E2A52] hover:bg-gray-50 flex flex-col items-center justify-center"
+            legacyBehavior>
             <CalendarIcon />
             <span className="mt-1 text-sm font-medium">Schedule Team</span>
           </Link>
-          <Link href="/bulletins" className="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow text-[#1E2A52] hover:bg-gray-50 flex flex-col items-center justify-center">
+          <Link
+            href="/bulletins"
+            className="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow text-[#1E2A52] hover:bg-gray-50 flex flex-col items-center justify-center"
+            legacyBehavior>
             <DocumentTextIcon />
             <span className="mt-1 text-sm font-medium">Create Bulletin</span>
           </Link>
-           <Link href="/team" className="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow text-[#1E2A52] hover:bg-gray-50 flex flex-col items-center justify-center">
+           <Link
+             href="/team"
+             className="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow text-[#1E2A52] hover:bg-gray-50 flex flex-col items-center justify-center"
+             legacyBehavior>
             <UsersIcon />
             <span className="mt-1 text-sm font-medium">Manage Team</span>
           </Link>
         </div>
       </div>
-      
       {/* PraiseSync Tips - Placeholder */}
       <div className="bg-[#e9e4dd] p-4 rounded-lg shadow">
         <h3 className="text-lg font-semibold text-[#1E2A52] mb-2">PraiseSync Tips ✨</h3>
