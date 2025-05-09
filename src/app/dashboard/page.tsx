@@ -38,19 +38,13 @@ const Dashboard: React.FC<{}> = () => {
     }
 
   return (
-<<<<<<< HEAD
+
     <div className="p-6 bg-[#FAF9F7]" style={{ fontFamily: 'Inter, sans-serif' }}>
       {/* Main KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
         <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow">
           <h3 className="text-sm font-medium text-gray-500">Next Service</h3>
-=======
-    <div className="p-6 bg-praise-bg dark:bg-praise-dark-bg text-praise-text-dark dark:text-praise-dark-text" style={{ fontFamily: 'Inter, sans-serif' }}>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-        {/* KPI: Next Service Date */}
-        <div className="bg-praise-card-bg dark:bg-praise-dark-card-bg p-6 rounded-lg shadow hover:shadow-lg transition-shadow">
-          <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">Next Service</h3>
->>>>>>> origin/main
+
           {nextService ? (
             <>
               <p className="text-2xl font-semibold text-praise-text-dark dark:text-praise-dark-text">{formatDate(nextService.date)}</p>
@@ -61,14 +55,8 @@ const Dashboard: React.FC<{}> = () => {
           )}
         </div>
 
-<<<<<<< HEAD
         <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow">
           <h3 className="text-sm font-medium text-gray-500">Next Bulletin Status</h3>
-=======
-        {/* KPI: Bulletin Ready? */}
-        <div className="bg-praise-card-bg dark:bg-praise-dark-card-bg p-6 rounded-lg shadow hover:shadow-lg transition-shadow">
-          <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">Next Bulletin Status</h3>
->>>>>>> origin/main
           {nextService ? (
             <p className={`text-2xl font-semibold ${nextService.bulletinReady ? 'text-green-500' : 'text-yellow-500'}`}>
               {nextService.bulletinReady ? 'Ready' : 'Pending'}
@@ -81,14 +69,8 @@ const Dashboard: React.FC<{}> = () => {
           </Link>
         </div>
 
-<<<<<<< HEAD
         <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow">
           <h3 className="text-sm font-medium text-gray-500">CCLI Reporting</h3>
-=======
-        {/* KPI: CCLI Status */}
-        <div className="bg-praise-card-bg dark:bg-praise-dark-card-bg p-6 rounded-lg shadow hover:shadow-lg transition-shadow">
-          <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">CCLI Reporting</h3>
->>>>>>> origin/main
            {nextService ? (
             <p className={`text-2xl font-semibold ${nextService.ccliStatus === 'Reported' ? 'text-green-500' : 'text-orange-500'}`}>
               {nextService.ccliStatus}
@@ -143,53 +125,25 @@ const Dashboard: React.FC<{}> = () => {
       <div className="mb-8">
         <h2 className="text-xl font-semibold text-praise-text-dark dark:text-praise-dark-text mb-4">Quick Actions</h2>
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
-<<<<<<< HEAD
           <Link href="/setlist" className="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow text-[#1E2A52] hover:bg-gray-50 flex flex-col items-center justify-center">
-=======
-          <Link
-            href="/setlist"
-            className="bg-praise-card-bg dark:bg-praise-dark-card-bg p-4 rounded-lg shadow hover:shadow-md transition-shadow text-praise-text-dark dark:text-praise-dark-text hover:bg-gray-50 dark:hover:bg-gray-600 flex flex-col items-center justify-center"
-          >
->>>>>>> origin/main
             <>
               <MusicNoteIcon />
               <span className="mt-1 text-sm font-medium">New Set List</span>
             </>
           </Link>
-<<<<<<< HEAD
           <Link href="/schedule" className="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow text-[#1E2A52] hover:bg-gray-50 flex flex-col items-center justify-center">
-=======
-          <Link
-            href="/schedule"
-            className="bg-praise-card-bg dark:bg-praise-dark-card-bg p-4 rounded-lg shadow hover:shadow-md transition-shadow text-praise-text-dark dark:text-praise-dark-text hover:bg-gray-50 dark:hover:bg-gray-600 flex flex-col items-center justify-center"
-          >
->>>>>>> origin/main
             <>
               <CalendarIcon />
               <span className="mt-1 text-sm font-medium">Schedule Team</span>
             </>
           </Link>
-<<<<<<< HEAD
           <Link href="/bulletins" className="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow text-[#1E2A52] hover:bg-gray-50 flex flex-col items-center justify-center">
-=======
-          <Link
-            href="/bulletins"
-            className="bg-praise-card-bg dark:bg-praise-dark-card-bg p-4 rounded-lg shadow hover:shadow-md transition-shadow text-praise-text-dark dark:text-praise-dark-text hover:bg-gray-50 dark:hover:bg-gray-600 flex flex-col items-center justify-center"
-          >
->>>>>>> origin/main
             <>
               <DocumentTextIcon />
               <span className="mt-1 text-sm font-medium">Create Bulletin</span>
             </>
           </Link>
-<<<<<<< HEAD
            <Link href="/team" className="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow text-[#1E2A52] hover:bg-gray-50 flex flex-col items-center justify-center">
-=======
-           <Link
-             href="/team"
-             className="bg-praise-card-bg dark:bg-praise-dark-card-bg p-4 rounded-lg shadow hover:shadow-md transition-shadow text-praise-text-dark dark:text-praise-dark-text hover:bg-gray-50 dark:hover:bg-gray-600 flex flex-col items-center justify-center"
-           >
->>>>>>> origin/main
             <>
               <UsersIcon />
               <span className="mt-1 text-sm font-medium">Manage Team</span>

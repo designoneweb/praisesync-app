@@ -48,20 +48,11 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarVisible }) => {
                   href={item.href} 
                   className={`flex items-center w-full py-2 px-3 rounded-lg transition-colors duration-200 ${
                     isActive 
-<<<<<<< HEAD
                       ? 'bg-[#F4B860] text-[#1E2A52]' 
                       : 'hover:bg-[#2A3B70] hover:text-[#F4B860]'
                   }`}
                 >
                   {React.cloneElement(item.icon, { className: `w-5 h-5 ${isActive ? 'text-[#1E2A52]' : 'text-white'}` })}
-=======
-                      ? 'bg-praise-accent text-praise-sidebar dark:text-praise-dark-sidebar' 
-                      : 'text-white hover:bg-[#2A3B70] dark:hover:bg-slate-700 hover:text-praise-accent dark:hover:text-praise-accent'
-                  }`}
-                >
-                  {/* Ensure icons handle dark mode if they have stroke/fill that needs to change, or pass className */}
-                  {React.cloneElement(item.icon, { className: isActive ? 'text-praise-sidebar dark:text-praise-dark-sidebar' : 'text-white group-hover:text-praise-accent' })}
->>>>>>> origin/main
                   <span className="ml-2">{item.name}</span>
                 </Link>
               </li>
