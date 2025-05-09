@@ -1,26 +1,12 @@
-@import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+/* 
+  Any global custom base styles can go below if needed. 
+  The :root variable theming has been removed to use Tailwind's darkMode: 'class'.
+  The Inter font is already handled by next/font/google in layout.tsx and 
+  applied to the body via a className, so no explicit body font-family 
+  declaration is strictly necessary here for Inter.
+*/
