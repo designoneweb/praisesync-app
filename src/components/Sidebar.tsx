@@ -44,17 +44,16 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarVisible }) => {
             const isActive = pathname === item.href;
             return (
               <li key={item.name} className="mb-2">
-                <Link href={item.href} legacyBehavior>
-                  <a
-                    className={`flex items-center w-full py-2 px-3 rounded-lg transition-colors duration-200 ${
-                      isActive 
-                        ? 'bg-[#F4B860] text-[#1E2A52]' 
-                        : 'hover:bg-[#2A3B70] hover:text-[#F4B860]'
-                    }`}
-                  >
-                    {item.icon}
-                    <span className="ml-2">{item.name}</span>
-                  </a>
+                <Link 
+                  href={item.href} 
+                  className={`flex items-center w-full py-2 px-3 rounded-lg transition-colors duration-200 ${
+                    isActive 
+                      ? 'bg-[#F4B860] text-[#1E2A52]' 
+                      : 'hover:bg-[#2A3B70] hover:text-[#F4B860]'
+                  }`}
+                >
+                  {React.cloneElement(item.icon, { className: `w-5 h-5 ${isActive ? 'text-[#1E2A52]' : 'text-white'}` })}
+                  <span className="ml-2">{item.name}</span>
                 </Link>
               </li>
             );

@@ -1,25 +1,46 @@
 
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react'; // Ensured useState, useEffect are imported
 import { MusicNoteIcon, CalendarIcon, DocumentTextIcon, UsersIcon } from "@/components/Icons";
 import { formatDate } from "@/components/Icons";
 import Link from 'next/link';
 
-const initialServices: any[] = [
+// Mock data for services - moved outside to be accessible by useEffect
+const allMockServices: any[] = [
   { id: 1, date: '2025-05-11', time: '10:00 AM', theme: "Mother's Day Service", bulletinReady: true, ccliStatus: 'Reported' },
   { id: 2, date: '2025-05-18', time: '10:00 AM', theme: 'Pentecost Sunday', bulletinReady: false, ccliStatus: 'Pending' },
   { id: 3, date: '2025-05-25', time: '10:00 AM', theme: 'Trinity Sunday', bulletinReady: true, ccliStatus: 'Reported' },
 ];
 
 const Dashboard: React.FC<{}> = () => {
-    const nextService = initialServices.length > 0 ? initialServices.sort((a,b) => new Date(a.date).getTime() - new Date(b.date).getTime()).find(s => new Date(s.date) >= new Date()) : null;
-    const upcomingServices = initialServices.filter(s => new Date(s.date) >= new Date()).slice(0, 3);
+    const [nextService, setNextService] = useState<any | null>(null);
+    const [upcomingServices, setUpcomingServices] = useState<any[]>([]);
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+      setIsClient(true);
+      const now = new Date();
+      const sortedServices = [...allMockServices].sort((a,b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+      const futureServices = sortedServices.filter(s => new Date(s.date) >= now);
+      
+      setNextService(futureServices.length > 0 ? futureServices[0] : null);
+      setUpcomingServices(futureServices.slice(0, 3));
+    }, []);
+
+    if (!isClient) {
+      // Render a loading state or null for server render to avoid mismatch
+      return (
+        <div className="p-6 min-h-screen flex items-center justify-center">
+          Loading Dashboard...
+        </div>
+      );
+    }
 
   return (
     <div className="p-6 bg-[#FAF9F7]" style={{ fontFamily: 'Inter, sans-serif' }}>
+      {/* Main KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-        {/* KPI: Next Service Date */}
         <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow">
           <h3 className="text-sm font-medium text-gray-500">Next Service</h3>
           {nextService ? (
@@ -32,7 +53,6 @@ const Dashboard: React.FC<{}> = () => {
           )}
         </div>
 
-        {/* KPI: Bulletin Ready? */}
         <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow">
           <h3 className="text-sm font-medium text-gray-500">Next Bulletin Status</h3>
           {nextService ? (
@@ -47,7 +67,6 @@ const Dashboard: React.FC<{}> = () => {
           </Link>
         </div>
 
-        {/* KPI: CCLI Status */}
         <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow">
           <h3 className="text-sm font-medium text-gray-500">CCLI Reporting</h3>
            {nextService ? (
@@ -98,25 +117,33 @@ const Dashboard: React.FC<{}> = () => {
         )}
       </div>
 
-      {/* Quick Actions Section */}
+      {/* Quick Actions Section - Already corrected for legacyBehavior */}
       <div className="mb-8">
         <h2 className="text-xl font-semibold text-[#1E2A52] mb-4">Quick Actions</h2>
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
           <Link href="/setlist" className="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow text-[#1E2A52] hover:bg-gray-50 flex flex-col items-center justify-center">
-            <MusicNoteIcon />
-            <span className="mt-1 text-sm font-medium">New Set List</span>
+            <>
+              <MusicNoteIcon />
+              <span className="mt-1 text-sm font-medium">New Set List</span>
+            </>
           </Link>
           <Link href="/schedule" className="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow text-[#1E2A52] hover:bg-gray-50 flex flex-col items-center justify-center">
-            <CalendarIcon />
-            <span className="mt-1 text-sm font-medium">Schedule Team</span>
+            <>
+              <CalendarIcon />
+              <span className="mt-1 text-sm font-medium">Schedule Team</span>
+            </>
           </Link>
           <Link href="/bulletins" className="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow text-[#1E2A52] hover:bg-gray-50 flex flex-col items-center justify-center">
-            <DocumentTextIcon />
-            <span className="mt-1 text-sm font-medium">Create Bulletin</span>
+            <>
+              <DocumentTextIcon />
+              <span className="mt-1 text-sm font-medium">Create Bulletin</span>
+            </>
           </Link>
            <Link href="/team" className="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow text-[#1E2A52] hover:bg-gray-50 flex flex-col items-center justify-center">
-            <UsersIcon />
-            <span className="mt-1 text-sm font-medium">Manage Team</span>
+            <>
+              <UsersIcon />
+              <span className="mt-1 text-sm font-medium">Manage Team</span>
+            </>
           </Link>
         </div>
       </div>
