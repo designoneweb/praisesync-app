@@ -38,23 +38,37 @@ const Dashboard: React.FC<{}> = () => {
     }
 
   return (
+<<<<<<< HEAD
     <div className="p-6 bg-[#FAF9F7]" style={{ fontFamily: 'Inter, sans-serif' }}>
       {/* Main KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
         <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow">
           <h3 className="text-sm font-medium text-gray-500">Next Service</h3>
+=======
+    <div className="p-6 bg-praise-bg dark:bg-praise-dark-bg text-praise-text-dark dark:text-praise-dark-text" style={{ fontFamily: 'Inter, sans-serif' }}>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+        {/* KPI: Next Service Date */}
+        <div className="bg-praise-card-bg dark:bg-praise-dark-card-bg p-6 rounded-lg shadow hover:shadow-lg transition-shadow">
+          <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">Next Service</h3>
+>>>>>>> origin/main
           {nextService ? (
             <>
-              <p className="text-2xl font-semibold text-[#1E2A52]">{formatDate(nextService.date)}</p>
-              <p className="text-sm text-gray-600">{nextService.theme}</p>
+              <p className="text-2xl font-semibold text-praise-text-dark dark:text-praise-dark-text">{formatDate(nextService.date)}</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300">{nextService.theme}</p>
             </>
           ) : (
-            <p className="text-2xl font-semibold text-[#1E2A52]">No upcoming services</p>
+            <p className="text-2xl font-semibold text-praise-text-dark dark:text-praise-dark-text">No upcoming services</p>
           )}
         </div>
 
+<<<<<<< HEAD
         <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow">
           <h3 className="text-sm font-medium text-gray-500">Next Bulletin Status</h3>
+=======
+        {/* KPI: Bulletin Ready? */}
+        <div className="bg-praise-card-bg dark:bg-praise-dark-card-bg p-6 rounded-lg shadow hover:shadow-lg transition-shadow">
+          <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">Next Bulletin Status</h3>
+>>>>>>> origin/main
           {nextService ? (
             <p className={`text-2xl font-semibold ${nextService.bulletinReady ? 'text-green-500' : 'text-yellow-500'}`}>
               {nextService.bulletinReady ? 'Ready' : 'Pending'}
@@ -62,13 +76,19 @@ const Dashboard: React.FC<{}> = () => {
           ) : (
              <p className="text-2xl font-semibold text-gray-400">N/A</p>
           )}
-          <Link href="/bulletins" className="mt-2 text-sm text-[#F4B860] hover:underline">
+          <Link href="/bulletins" className="mt-2 text-sm text-praise-accent hover:underline">
             View Bulletins
           </Link>
         </div>
 
+<<<<<<< HEAD
         <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow">
           <h3 className="text-sm font-medium text-gray-500">CCLI Reporting</h3>
+=======
+        {/* KPI: CCLI Status */}
+        <div className="bg-praise-card-bg dark:bg-praise-dark-card-bg p-6 rounded-lg shadow hover:shadow-lg transition-shadow">
+          <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">CCLI Reporting</h3>
+>>>>>>> origin/main
            {nextService ? (
             <p className={`text-2xl font-semibold ${nextService.ccliStatus === 'Reported' ? 'text-green-500' : 'text-orange-500'}`}>
               {nextService.ccliStatus}
@@ -76,7 +96,7 @@ const Dashboard: React.FC<{}> = () => {
           ) : (
              <p className="text-2xl font-semibold text-gray-400">N/A</p>
           )}
-          <Link href="/cclisettings" className="mt-2 text-sm text-[#F4B860] hover:underline">
+          <Link href="/cclisettings" className="mt-2 text-sm text-praise-accent hover:underline">
             Manage CCLI
           </Link>
         </div>
@@ -86,7 +106,7 @@ const Dashboard: React.FC<{}> = () => {
       <div className="mb-8 text-center">
         <button 
           onClick={() => alert('Prepare Sunday Wizard (not implemented yet)')} 
-          className="bg-[#F4B860] text-[#1E2A52] font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-opacity-90 transition-colors text-lg"
+          className="bg-praise-accent text-praise-sidebar dark:text-praise-text-dark font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-opacity-90 transition-colors text-lg"
         >
           Prepare Sunday
         </button>
@@ -94,52 +114,82 @@ const Dashboard: React.FC<{}> = () => {
       
       {/* Upcoming Services Section */}
       <div className="mb-8">
-        <h2 className="text-xl font-semibold text-[#1E2A52] mb-4">Upcoming Services</h2>
+        <h2 className="text-xl font-semibold text-praise-text-dark dark:text-praise-dark-text mb-4">Upcoming Services</h2>
         {upcomingServices.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {upcomingServices.map(service => (
-                <div key={service.id} className="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow">
-                  <h3 className="font-semibold text-[#1E2A52]">{formatDate(service.date)} - {service.time}</h3>
-                  <p className="text-sm text-gray-700">{service.theme}</p>
+                <div key={service.id} className="bg-praise-card-bg dark:bg-praise-dark-card-bg p-4 rounded-lg shadow hover:shadow-md transition-shadow">
+                  <h3 className="font-semibold text-praise-text-dark dark:text-praise-dark-text">{formatDate(service.date)} - {service.time}</h3>
+                  <p className="text-sm text-gray-700 dark:text-gray-300">{service.theme}</p>
                   <div className="mt-2">
-                      <span className={`text-xs font-semibold px-2 py-1 rounded-full ${service.bulletinReady ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'}`}>
+                      <span className={`text-xs font-semibold px-2 py-1 rounded-full ${service.bulletinReady 
+                        ? 'bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100' 
+                        : 'bg-yellow-100 text-yellow-700 dark:bg-yellow-600 dark:text-yellow-100'}`}>
                       Bulletin: {service.bulletinReady ? 'Ready' : 'Pending'}
                       </span>
                   </div>
-                  <Link href={`/schedule/${service.id}`} className="mt-3 text-sm text-[#F4B860] hover:underline">
+                  <Link href={`/schedule/${service.id}`} className="mt-3 text-sm text-praise-accent hover:underline">
                     View Plan
                   </Link>
                 </div>
             ))}
             </div>
         ) : (
-            <p className="text-gray-600">No upcoming services scheduled.</p>
+            <p className="text-gray-600 dark:text-gray-400">No upcoming services scheduled.</p>
         )}
       </div>
 
       {/* Quick Actions Section - Already corrected for legacyBehavior */}
       <div className="mb-8">
-        <h2 className="text-xl font-semibold text-[#1E2A52] mb-4">Quick Actions</h2>
+        <h2 className="text-xl font-semibold text-praise-text-dark dark:text-praise-dark-text mb-4">Quick Actions</h2>
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
+<<<<<<< HEAD
           <Link href="/setlist" className="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow text-[#1E2A52] hover:bg-gray-50 flex flex-col items-center justify-center">
+=======
+          <Link
+            href="/setlist"
+            className="bg-praise-card-bg dark:bg-praise-dark-card-bg p-4 rounded-lg shadow hover:shadow-md transition-shadow text-praise-text-dark dark:text-praise-dark-text hover:bg-gray-50 dark:hover:bg-gray-600 flex flex-col items-center justify-center"
+          >
+>>>>>>> origin/main
             <>
               <MusicNoteIcon />
               <span className="mt-1 text-sm font-medium">New Set List</span>
             </>
           </Link>
+<<<<<<< HEAD
           <Link href="/schedule" className="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow text-[#1E2A52] hover:bg-gray-50 flex flex-col items-center justify-center">
+=======
+          <Link
+            href="/schedule"
+            className="bg-praise-card-bg dark:bg-praise-dark-card-bg p-4 rounded-lg shadow hover:shadow-md transition-shadow text-praise-text-dark dark:text-praise-dark-text hover:bg-gray-50 dark:hover:bg-gray-600 flex flex-col items-center justify-center"
+          >
+>>>>>>> origin/main
             <>
               <CalendarIcon />
               <span className="mt-1 text-sm font-medium">Schedule Team</span>
             </>
           </Link>
+<<<<<<< HEAD
           <Link href="/bulletins" className="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow text-[#1E2A52] hover:bg-gray-50 flex flex-col items-center justify-center">
+=======
+          <Link
+            href="/bulletins"
+            className="bg-praise-card-bg dark:bg-praise-dark-card-bg p-4 rounded-lg shadow hover:shadow-md transition-shadow text-praise-text-dark dark:text-praise-dark-text hover:bg-gray-50 dark:hover:bg-gray-600 flex flex-col items-center justify-center"
+          >
+>>>>>>> origin/main
             <>
               <DocumentTextIcon />
               <span className="mt-1 text-sm font-medium">Create Bulletin</span>
             </>
           </Link>
+<<<<<<< HEAD
            <Link href="/team" className="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow text-[#1E2A52] hover:bg-gray-50 flex flex-col items-center justify-center">
+=======
+           <Link
+             href="/team"
+             className="bg-praise-card-bg dark:bg-praise-dark-card-bg p-4 rounded-lg shadow hover:shadow-md transition-shadow text-praise-text-dark dark:text-praise-dark-text hover:bg-gray-50 dark:hover:bg-gray-600 flex flex-col items-center justify-center"
+           >
+>>>>>>> origin/main
             <>
               <UsersIcon />
               <span className="mt-1 text-sm font-medium">Manage Team</span>
@@ -148,12 +198,12 @@ const Dashboard: React.FC<{}> = () => {
         </div>
       </div>
       
-      {/* PraiseSync Tips - Placeholder */}
-      <div className="bg-[#e9e4dd] p-4 rounded-lg shadow">
-        <h3 className="text-lg font-semibold text-[#1E2A52] mb-2">PraiseSync Tips ✨</h3>
-        <p className="text-sm text-gray-700">
+      {/* PraiseSync Tips */}
+      <div className="bg-praise-tip-bg dark:bg-praise-dark-tip-bg p-4 rounded-lg shadow text-gray-700 dark:text-gray-200">
+        <h3 className="text-lg font-semibold text-praise-text-dark dark:text-praise-dark-text mb-2">PraiseSync Tips ✨</h3>
+        <p className="text-sm">
           Tip: You can quickly add songs to a set list by dragging them from your song library!
-          Need help? Check out our <a href="#" className="text-[#F4B860] hover:underline">support docs</a>.
+          Need help? Check out our <a href="#" className="text-praise-accent hover:underline">support docs</a>.
         </p>
       </div>
     </div>
